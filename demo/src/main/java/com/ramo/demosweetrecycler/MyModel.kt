@@ -7,6 +7,6 @@ data class MyModel(
     val title: String,
     val isUser: Boolean,
 ) : Identifiable {
-    override val id: String
+    override val diffId: String
         get() = UUID.randomUUID().toString()
 }
