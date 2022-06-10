@@ -19,7 +19,7 @@ open class VBSweetViewHolder<VB : ViewBinding, T>(
 
     protected val binding: VB get() = _binding!!
 
-    open override fun bind(data: T){
+    open override fun bind(data: T) {
         onBindData?.invoke(binding, adapterPosition, data)
     }
 

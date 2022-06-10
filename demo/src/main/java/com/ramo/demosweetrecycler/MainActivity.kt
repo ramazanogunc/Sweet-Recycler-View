@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupViewPager()
-
     }
 
     private fun setupViewPager() {
@@ -32,8 +31,6 @@ class MainActivity : AppCompatActivity() {
                 tab.text = adapter.getTitle(position)
             }.attach()
         }
-
     }
-
 }
 
