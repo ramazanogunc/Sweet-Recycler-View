@@ -36,7 +36,6 @@ class DataBindingFragment : Fragment() {
         setupRecycler()
     }
 
-
     private fun setupRecycler() {
         binding.sweetRecycler.render<MyModel> { viewGroup, position, data ->
             return@render if (data.isUser) DBUserViewHolder(viewGroup)
