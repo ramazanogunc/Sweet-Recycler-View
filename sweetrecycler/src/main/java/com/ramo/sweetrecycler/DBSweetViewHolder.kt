@@ -6,11 +6,10 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
-open class DBSweetViewHolder<T>(
+abstract class DBSweetViewHolder<DB : ViewDataBinding, T>(
     @LayoutRes layoutId: Int,
     viewGroup: ViewGroup?,
-    private val onBindData: ((binding: ViewDataBinding, position: Int, data: T) -> Unit)? = null,
-    private val _binding: ViewDataBinding? = DataBindingUtil.inflate(
+    private val _binding: DB? = DataBindingUtil.inflate(
         LayoutInflater.from(viewGroup?.context),
         layoutId,
         viewGroup,
@@ -20,10 +19,6 @@ open class DBSweetViewHolder<T>(
     _binding?.root!!
 ) {
 
-    protected val binding: ViewDataBinding get() = _binding!!
-
-    open override fun bind(data: T) {
-        onBindData?.invoke(binding, adapterPosition, data)
-    }
+    protected val binding: DB get() = _binding!!
 
 }

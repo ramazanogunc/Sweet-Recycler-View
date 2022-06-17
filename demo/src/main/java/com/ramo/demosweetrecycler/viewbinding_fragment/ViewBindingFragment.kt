@@ -9,9 +9,6 @@ import androidx.fragment.app.Fragment
 import com.ramo.demosweetrecycler.MockService
 import com.ramo.demosweetrecycler.MyModel
 import com.ramo.demosweetrecycler.databinding.FragmentSweetRecyclerViewBinding
-import com.ramo.demosweetrecycler.databinding.ItemProductBinding
-import com.ramo.demosweetrecycler.databinding.ItemUserBinding
-import com.ramo.sweetrecycler.VBSweetViewHolder
 
 class ViewBindingFragment : Fragment() {
 
@@ -22,7 +19,7 @@ class ViewBindingFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSweetRecyclerViewBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -34,9 +31,8 @@ class ViewBindingFragment : Fragment() {
 
     private fun setupRecycler() {
         binding.sweetRecycler.render<MyModel> { viewGroup, position, data ->
-            //return@render if (data.isUser) getUserViewHolderVB(viewGroup)
             return@render if (data.isUser) VBUserViewHolder(viewGroup)
-            else getProductViewHolderVB(viewGroup)
+            else VBProductViewHolder(viewGroup)
         }
 
         binding.sweetRecycler.setOnItemClickListener<MyModel> { view, position, data ->
@@ -44,7 +40,7 @@ class ViewBindingFragment : Fragment() {
         }
         binding.sweetRecycler.setData(MockService.getMockList())
     }
-
+    
     private fun getUserViewHolderVB(viewGroup: ViewGroup): VBSweetViewHolder<ItemUserBinding, MyModel> {
         return VBSweetViewHolder(
             ItemUserBinding::inflate,

@@ -4,15 +4,13 @@ import android.view.ViewGroup
 import com.ramo.demosweetrecycler.BR
 import com.ramo.demosweetrecycler.MyModel
 import com.ramo.demosweetrecycler.R
-import com.ramo.demosweetrecycler.databinding.ItemProductBinding
-import com.ramo.demosweetrecycler.databinding.ItemUserBinding
-import com.ramo.demosweetrecycler.databinding.ItemUserDataBindingBinding
+import com.ramo.demosweetrecycler.databinding.ItemProductDataBindingBinding
 import com.ramo.sweetrecycler.DBSweetViewHolder
 
-class DBUserViewHolder(
+class DBProductViewHolder(
     viewGroup: ViewGroup
-) : DBSweetViewHolder<ItemUserDataBindingBinding, MyModel>(
-    R.layout.item_user_data_binding,
+) : DBSweetViewHolder<ItemProductDataBindingBinding, MyModel>(
+    R.layout.item_product_data_binding,
     viewGroup
 ) {
     override fun bind(data: MyModel) {

@@ -13,6 +13,7 @@ import com.ramo.demosweetrecycler.MyModel
 import com.ramo.demosweetrecycler.R
 import com.ramo.demosweetrecycler.databinding.FragmentSweetRecyclerViewBinding
 import com.ramo.demosweetrecycler.normal_fragment.UserViewHolder
+import com.ramo.demosweetrecycler.viewbinding_fragment.VBProductViewHolder
 import com.ramo.demosweetrecycler.viewbinding_fragment.VBUserViewHolder
 import com.ramo.sweetrecycler.DBSweetViewHolder
 import com.ramo.sweetrecycler.SweetViewHolder
@@ -26,7 +27,7 @@ class DataBindingFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSweetRecyclerViewBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -37,8 +38,8 @@ class DataBindingFragment : Fragment() {
 
     private fun setupRecycler() {
         binding.sweetRecycler.render<MyModel> { viewGroup, position, data ->
-            //return@render getUserViewHolderDB(viewGroup)
-            return@render DBUserViewHolder(viewGroup)
+            return@render if (data.isUser) DBUserViewHolder(viewGroup)
+            else DBProductViewHolder(viewGroup)
         }
 
         binding.sweetRecycler.setOnItemClickListener<MyModel> { view, position, data ->
@@ -47,14 +48,5 @@ class DataBindingFragment : Fragment() {
         binding.sweetRecycler.setData(MockService.getMockList())
     }
 
-    private fun getUserViewHolderDB(viewGroup: ViewGroup): DBSweetViewHolder<MyModel> {
-        return DBSweetViewHolder(
-            R.layout.item_user_data_binding,
-            viewGroup,
-            onBindData = { binding, position, data ->
-                binding.setVariable(BR.data, data)
-                binding.executePendingBindings()
-            },
-        )
-    }
+
 }
