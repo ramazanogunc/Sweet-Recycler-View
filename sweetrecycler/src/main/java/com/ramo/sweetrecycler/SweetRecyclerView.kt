@@ -32,7 +32,7 @@ class SweetRecyclerView @JvmOverloads constructor(
     }
 
     @JvmName("renderWithIdentifiableItem")
-    fun <T : Identifiable> render(
+    fun <T : SweetDiff> render(
         onBind: (parent: ViewGroup, position: Int, data: T) -> SweetViewHolder<T>
     ) {
         adapter = SweetAdapter(onBind, IdentifiableDiffUtilCallBack())

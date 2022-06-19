@@ -12,15 +12,18 @@ open class SweetAdapter<T>(
 
     private var onItemClick: ((view: View, position: Int, data: T) -> Unit)? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, position: Int) =
-        onBind.invoke(parent, position, getItem(position))
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): SweetViewHolder<T> {
+        val holder = onBind.invoke(parent, position, getItem(position))
+        if (onItemClick != null)
+            holder.itemView.setOnClickListener {
+                onItemClick?.invoke(it, position, getItem(position))
+            }
+        return holder
+    }
+
 
     override fun onBindViewHolder(holder: SweetViewHolder<T>, position: Int) {
         holder.bind(getItem(position))
-        onItemClick ?: return
-        holder.itemView.setOnClickListener {
-            onItemClick?.invoke(it, position, getItem(position))
-        }
     }
 
     override fun getItemViewType(position: Int): Int = position

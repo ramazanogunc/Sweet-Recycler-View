@@ -40,24 +40,5 @@ class ViewBindingFragment : Fragment() {
         }
         binding.sweetRecycler.setData(MockService.getMockList())
     }
-    
-    private fun getUserViewHolderVB(viewGroup: ViewGroup): VBSweetViewHolder<ItemUserBinding, MyModel> {
-        return VBSweetViewHolder(
-            ItemUserBinding::inflate,
-            viewGroup,
-            onBindData = { binding, position, data ->
-                binding.txtUsername.text = data.title
-            },
-        )
-    }
 
-    private fun getProductViewHolderVB(viewGroup: ViewGroup): VBSweetViewHolder<ItemProductBinding, MyModel> {
-        return VBSweetViewHolder(
-            ItemProductBinding::inflate,
-            viewGroup,
-            onBindData = { binding, position, data ->
-                binding.txtProductName.text = data.title
-            },
-        )
-    }
 }

@@ -1,5 +1,5 @@
 package com.ramo.sweetrecycler
 
-interface Identifiable {
+interface SweetDiff {
     val diffId: String
 }
