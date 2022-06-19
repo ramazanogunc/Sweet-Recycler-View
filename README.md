@@ -14,7 +14,8 @@
 SweetRecyclerView is a custom recyclerview library. SweetRecyclerView includes the list adapter itself, so <b>you don't have to write a listadapter.</b>
 </p>
 
-# Features 
+# Features
+
 - Easy to use ✅
 - Support multi viewholder ✅
 - Support onitemclicklistenner ✅
@@ -22,8 +23,14 @@ SweetRecyclerView is a custom recyclerview library. SweetRecyclerView includes t
 - Support identifiable diff util callback ✅
 - Support custom adapter ✅
 
+# Screencast
+
+<img src="https://github.com/ramazanogunc/Sweet-Recycler-View/blob/develop/ss/ss1.gif?raw=true" width="200"  />
+
 # How to use
+
 <b>Add jitpack repository in the project build.gradle</b>
+
 ```
 allprojects {
  repositories {
